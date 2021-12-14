@@ -5,12 +5,13 @@ export default [
   {
     exact: true,
     path: '/',
-    component: 'index',
-  },
-
-  {
-    path: '/one',
-    component: '@/pages/Two',
+    component: '../layout',
+    routes: [
+      // {
+      //   path: '/one',
+      //   component: '@/pages/Two',
+      // },
+    ],
   },
   /**
    * 404 页面
