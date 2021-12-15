@@ -3,20 +3,27 @@ export default [
    * 主页
    */
   {
-    exact: true,
     path: '/',
     component: '../layout',
     routes: [
-      // {
-      //   path: '/one',
-      //   component: '@/pages/Two',
-      // },
+      {
+        path: '/',
+        redirect: '/todolist',
+      },
+      {
+        path: '/home',
+        component: '@/pages/Home',
+      },
+      {
+        path: '/todolist',
+        component: '@/pages/Todolist',
+      },
+      /**
+       * 404 页面
+       */
+      {
+        component: '@/pages/404',
+      },
     ],
-  },
-  /**
-   * 404 页面
-   */
-  {
-    component: '@/pages/404',
   },
 ];

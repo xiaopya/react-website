@@ -1,0 +1,98 @@
+.todolist_app {
+  position: relative;
+  z-index: 99;
+  padding: 1rem;
+}
+
+header {
+  font-size: 1.5rem;
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+form {
+  max-width: 1000px;
+  display: flex;
+  flex-direction: column;
+  margin-inline: auto;
+  gap: 1rem;
+}
+
+form input {
+  padding-left: 0.7rem;
+  font-size: 1rem;
+  border: none;
+  background: white;
+  outline: none;
+}
+form button {
+  padding: 0.5rem;
+  font-size: 1.3rem;
+  border: none;
+  background: white;
+}
+
+form button {
+  cursor: pointer;
+}
+
+.input__container {
+  display: flex;
+}
+
+.todo-input {
+  flex-grow: 1;
+}
+
+.todo-list {
+  margin-block: 1rem;
+  width: 100%;
+  max-width: 1000px;
+  list-style: none;
+}
+
+.todo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.todo {
+  padding: 0.3rem;
+  background: white;
+  font-size: 1.2rem;
+  color: black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.todo + .todo {
+  margin-top: 0.5rem;
+}
+
+.complete-btn {
+  background: rgb(11, 212, 162);
+}
+
+.todo-item {
+  padding: 0rem 0.5rem;
+  flex-grow: 1;
+  max-width: 100%;
+}
+
+.fa-trash,
+.fa-check {
+  pointer-events: none;
+}
+
+.fall {
+  transform: translateY(10rem) rotateZ(20deg);
+  opacity: 0;
+}
+
+.completed {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
