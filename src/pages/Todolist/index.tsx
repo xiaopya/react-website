@@ -6,10 +6,9 @@ import { useSelector } from 'react-redux';
 import { TodoModel } from '@/components/Todolist/Todo';
 
 function App() {
-  const todos = useSelector((state: State) => state.todos.todos);
+  const todos = useSelector((state: State) => state?.todos?.todos);
   const [status, setStatus] = useState<string>('all');
   const [filteredTodos, setFilteredTodos] = useState<TodoModel[]>([]);
-
   useEffect(() => {
     //
     const filterHandler = () => {

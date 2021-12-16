@@ -15,7 +15,7 @@ const TodoList: React.FC<Props> = ({ filteredTodos }) => {
   return (
     <div className="todo-container">
       <ul className="todo-list">
-        {todos.map((todo) => (
+        {todos?.map((todo) => (
           <Todo
             todo={todo}
             key={todo.id}

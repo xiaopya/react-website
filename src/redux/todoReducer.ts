@@ -1,5 +1,5 @@
 import { TodoModel } from '@/components/Todolist/Todo';
-
+import { storage } from '@/utils/tool';
 const initialState: {
   todos: TodoModel[];
   status: string;
@@ -16,45 +16,58 @@ type Action = {
 };
 
 const TodoReducer = (state = initialState, action: Action) => {
+  // 数据存储到本地
+  let valsState;
+  if (!storage.get('state')) {
+    valsState = { ...state, todos: [] };
+    storage.set('state', valsState);
+  } else {
+    valsState = storage.get('state');
+  }
+  console.log(valsState, 'valsState');
   switch (action.type) {
     default:
-      return state;
+      return valsState;
     case 'ADD_TODO':
       if (action.payload?.name !== '') {
-        return { ...state, todos: [...state.todos, action.payload] };
+        valsState = { ...state, todos: [...state.todos, action.payload] };
+        storage.set('state', valsState);
+        return valsState;
       }
-      return state;
+      return valsState;
     case 'DELETE_TODO':
-      return { ...state, todos: action.payload };
+      valsState = { ...valsState, todos: action.payload };
+      storage.set('state', valsState);
+      return { ...valsState, todos: action.payload };
 
     case 'CHANGE_CHECKED':
-      //   const updatedTodos = state.todos.map((todo) =>
-      //     todo.id === action.payload?.id ? { ...todo, completed: !todo.completed } : todo
-      //   );
-      //   console.log(updatedTodos);
-      //   return { ...state, todos: updatedTodos };
-
-      const updatedTodos = [...state.todos];
+      const updatedTodos = [...valsState.todos];
       const todo = updatedTodos.find((todo) => todo.id === action.payload?.id)!;
       todo.completed = !todo.completed;
-      return { ...state, todos: updatedTodos };
+      valsState = { ...valsState, todos: updatedTodos };
+      storage.set('state', valsState);
+      return valsState;
 
     case 'UPDATE_STATUS':
-      //   return { ...state, status: action.payload };
+      //   return { ...valsState, status: action.payload };
       if (action.payload === 'completed') {
-        const filteredTodos = state.todos.filter((todo) => todo.completed);
+        const filteredTodos = valsState.todos.filter(
+          (todo: { completed: any }) => todo.completed,
+        );
         console.log(filteredTodos);
 
-        return { ...state, filteredTodos: filteredTodos };
+        return { ...valsState, filteredTodos: filteredTodos };
       }
       if (action.payload === 'uncompleted') {
-        const filteredTodos = state.todos.filter((todo) => !todo.completed);
+        const filteredTodos = valsState.todos.filter(
+          (todo: { completed: any }) => !todo.completed,
+        );
         console.log(filteredTodos);
 
-        return { ...state, filteredTodos: filteredTodos };
+        return { ...valsState, filteredTodos: filteredTodos };
       } else {
-        console.log(state.todos);
-        return { ...state, filteredTodos: state.todos };
+        console.log(valsState.todos);
+        return { ...valsState, filteredTodos: valsState.todos };
       }
 
     case 'FILTER_TODOS':

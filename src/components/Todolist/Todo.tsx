@@ -35,13 +35,15 @@ const Todo: React.FC<Props> = ({ id, completed, name }) => {
     dispatch(deleteTodo(newTodos));
     message.success('删除成功');
   };
-  console.log(todo, 'todo');
+
   return (
     <div className="todo">
-      <Checkbox checked={todo?.completed} onChange={onChange} />
-      <li className={completed ? 'todo-item completed' : 'todo-item'}>
-        {name}
-      </li>
+      <Checkbox checked={todo?.completed} onChange={onChange}>
+        <li className={completed ? 'todo-item completed' : 'todo-item'}>
+          {name}
+        </li>
+      </Checkbox>
+
       <Popconfirm
         placement="topLeft"
         title="确定要删除吗"

@@ -18,12 +18,13 @@ export default [
         path: '/todolist',
         component: '@/pages/Todolist',
       },
-      /**
-       * 404 页面
-       */
-      {
-        component: '@/pages/404',
-      },
     ],
+  },
+  /**
+   * 404 页面
+   */
+  {
+    path: '/404',
+    component: '@/pages/Access_Error/404',
   },
 ];

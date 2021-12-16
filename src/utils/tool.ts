@@ -1,19 +1,24 @@
 import { message } from 'antd';
 import { Variable } from './variable';
 
-export const storage = {
-  set(key: string, value: any) {
+export const storage: {
+  set(key: string, value: any): void;
+  get(key: string): any;
+  remove(key: string): void;
+  clear(): void;
+} = {
+  set(key, value) {
     if (value) {
       window.localStorage.setItem(key, JSON.stringify(value));
     } else {
       storage.remove(key);
     }
   },
-  get(key: string) {
+  get(key) {
     const item = window.localStorage.getItem(key);
     return item ? JSON.parse(item) : null;
   },
-  remove(key: string) {
+  remove(key) {
     window.localStorage.removeItem(key);
   },
   clear() {
