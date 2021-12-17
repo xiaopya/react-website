@@ -50,15 +50,9 @@ export const LayoutHcf: React.FunctionComponent<IAppProps> = ({
         <ErrorPage />
       ) : (
         <Layout>
-          <Header
-            style={{
-              background: '#fff',
-            }}
-          >
-            <Headers />
-          </Header>
+          <Headers />
           <Content>
-            <Particle />
+            {/* <Particle /> */}
             <Layout>{children}</Layout>
           </Content>
           <BackTop>

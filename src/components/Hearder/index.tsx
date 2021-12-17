@@ -1,4 +1,5 @@
-import * as React from 'react';
+import React, { useEffect, useRef } from 'react';
+import Parallax from 'parallax-js';
 import { Menu, Avatar } from 'antd';
 import { history, Link } from 'umi';
 import { menus } from '@/utils/menu';
@@ -9,9 +10,17 @@ const { SubMenu } = Menu;
 interface IAppProps {}
 
 export const Headers: React.FunctionComponent<IAppProps> = () => {
+  const onRef: React.MutableRefObject<undefined> = useRef();
+
   const handleClick: (value: any) => void = (value) => {
     console.log(value, 'value header');
   };
+
+  useEffect(() => {
+    new Parallax(onRef.current, {
+      relativeInput: true,
+    });
+  }, []);
 
   function getMenuItem(menuArr: any): any {
     // 获取菜单项
@@ -62,7 +71,11 @@ export const Headers: React.FunctionComponent<IAppProps> = () => {
             history.push('/home');
           }}
         >
-          <Avatar size={46} src={require('@/images/logo.png')} />
+          <div ref={onRef} id="scene">
+            <div data-depth="0.2">
+              <Avatar size={46} src={require('@/images/logo.gif')} />
+            </div>
+          </div>
         </span>
         <div className={styles.width_block}>
           <Menu onClick={handleClick} mode="horizontal">
