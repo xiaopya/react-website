@@ -56,7 +56,12 @@ export const Headers: React.FunctionComponent<IAppProps> = () => {
       <Menu
         mode="horizontal"
         theme="light"
-        style={{ height: '100%', borderRight: 0 }}
+        style={{
+          height: '100%',
+          lineHeight: '64px',
+          borderBottom: 'none',
+          borderRight: 0,
+        }}
       >
         {getMenuItem(menus)}
       </Menu>
@@ -78,7 +83,13 @@ export const Headers: React.FunctionComponent<IAppProps> = () => {
           </div>
         </span>
         <div className={styles.width_block}>
-          <Menu onClick={handleClick} mode="horizontal">
+          <Menu
+            style={{
+              height: '64px',
+            }}
+            onClick={handleClick}
+            mode="horizontal"
+          >
             {/* <Menu.Item key="todolist">TODOLIST</Menu.Item> */}
             {sideBarRender()}
           </Menu>

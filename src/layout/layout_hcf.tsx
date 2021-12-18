@@ -1,5 +1,5 @@
 import { Layout, BackTop, Tooltip } from 'antd';
-import { Particle } from '@/components/Particle';
+// import { Particle } from '@/components/Particle';
 import { Headers } from '@/components/Hearder';
 import { Myiconfont } from '@/utils/IconFont';
 import rootReducer from '@/redux/rootReducer';
@@ -12,7 +12,7 @@ import { Variable } from '@/utils/variable';
 import _ from 'lodash';
 import { history } from 'umi';
 import ErrorPage from '@/pages/Access_Error/404';
-const { Content, Footer, Header } = Layout;
+const { Content, Footer } = Layout;
 import 'antd/dist/antd.css';
 const store = createStore(rootReducer, composeWithDevTools());
 
