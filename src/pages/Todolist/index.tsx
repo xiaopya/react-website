@@ -4,6 +4,7 @@ import TodoList, { State } from '@/components/Todolist/TodoList';
 import Form from '@/components/Todolist/Form';
 import { useSelector } from 'react-redux';
 import { TodoModel } from '@/components/Todolist/Todo';
+import { Particle } from '@/components/Particle';
 
 function App() {
   const todos = useSelector((state: State) => state?.todos?.todos);
@@ -30,6 +31,7 @@ function App() {
 
   return (
     <div className="todolist_app">
+      <Particle />
       <header>
         <h1>一个简单的todolist 你可以简单的记录你的一些东西🎉</h1>
       </header>

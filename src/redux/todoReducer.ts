@@ -16,6 +16,7 @@ type Action = {
 };
 
 const TodoReducer = (state = initialState, action: Action) => {
+  console.log(state, action, 'action.....');
   // 数据存储到本地
   let valsState;
   if (!storage.get('state')) {
@@ -24,7 +25,6 @@ const TodoReducer = (state = initialState, action: Action) => {
   } else {
     valsState = storage.get('state');
   }
-  console.log(valsState, 'valsState');
   switch (action.type) {
     default:
       return valsState;
@@ -45,6 +45,11 @@ const TodoReducer = (state = initialState, action: Action) => {
       const todo = updatedTodos.find((todo) => todo.id === action.payload?.id)!;
       todo.completed = !todo.completed;
       valsState = { ...valsState, todos: updatedTodos };
+      storage.set('state', valsState);
+      return valsState;
+
+    case 'CLEAR_TODOS':
+      valsState = { ...valsState, todos: [] };
       storage.set('state', valsState);
       return valsState;
 

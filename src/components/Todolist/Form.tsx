@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { Tag, message } from 'antd';
-import { AddTodo } from '@/redux/todoActions';
+import { Tag, message, Popconfirm } from 'antd';
+import { AddTodo, clearTodos } from '@/redux/todoActions';
 import { Myiconfont } from '@/utils/IconFont';
+import { storage } from '@/utils/tool';
 
 interface Props {
   status: string;
@@ -32,6 +33,7 @@ const Form: React.FC<Props> = ({ setStatus }) => {
   ];
 
   const [text, setText] = useState('');
+  const [select, setSelect] = useState('未选择');
 
   const dispatch = useDispatch();
 
@@ -53,8 +55,22 @@ const Form: React.FC<Props> = ({ setStatus }) => {
     setText('');
   };
 
-  const handleFilterChange = (v: { id: number; value: string }) => () => {
-    setStatus(v.value);
+  const handleFilterChange =
+    (v: { title: React.SetStateAction<string>; id: number; value: string }) =>
+    () => {
+      // 展现出 当前所选的 是哪一项
+      setSelect(v.title);
+      setStatus(v.value);
+    };
+
+  //清空 所有数据
+  const confirm = () => {
+    if (storage.get('state')?.todos?.length !== 0) {
+      dispatch(clearTodos('clear'));
+      message.success('删除成功');
+    } else {
+      message.error('未曾有数据,请您不要做频繁的删除');
+    }
   };
 
   return (
@@ -71,22 +87,43 @@ const Form: React.FC<Props> = ({ setStatus }) => {
           <Myiconfont type="icon-tianjia" />
         </button>
       </div>
-      <div className="filter__container">
-        {obj?.map((v) => (
-          <Tag
-            style={{
-              cursor: 'pointer',
-            }}
-            key={v.id}
-            color={v.color}
-            onClick={handleFilterChange(v)}
-          >
-            {v.title}
-          </Tag>
-        ))}
+      <div
+        className="filter__container"
+        style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+        }}
+      >
+        <div>
+          {obj?.map((v) => (
+            <Tag
+              style={{
+                cursor: 'pointer',
+              }}
+              key={v.id}
+              color={v.color}
+              onClick={handleFilterChange(v)}
+            >
+              {v.title}
+            </Tag>
+          ))}
+          <Tag>当前选中：{select}</Tag>
+        </div>
+        <Popconfirm
+          placement="topLeft"
+          title="确定要删除吗"
+          onConfirm={confirm}
+          okText="确定"
+          cancelText="取消"
+        >
+          <Tag>清空</Tag>
+        </Popconfirm>
       </div>
     </form>
   );
 };
 
 export default Form;
+function state(state: any): any {
+  throw new Error('Function not implemented.');
+}

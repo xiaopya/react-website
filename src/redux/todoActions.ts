@@ -34,3 +34,10 @@ export const filterTodos = (status: string) => {
     payload: status,
   };
 };
+
+export const clearTodos = (status: string) => {
+  return {
+    type: 'CLEAR_TODOS',
+    payload: status,
+  };
+};
