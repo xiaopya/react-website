@@ -72,9 +72,9 @@ export const LayoutHcf: React.FunctionComponent<IAppProps> = ({
               </span>
             </Tooltip>
           </BackTop>
-          <Footer style={{ textAlign: 'center' }}>
+          {/* <Footer style={{ textAlign: 'center' }}>
             {Variable.LAYOUT_HCF.user_title}
-          </Footer>
+          </Footer> */}
         </Layout>
       )}
     </Provider>

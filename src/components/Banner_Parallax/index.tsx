@@ -4,7 +4,7 @@ import useTypewriter from 'react-typewriter-hook';
 
 interface IAppProps {}
 
-const App: React.FunctionComponent<IAppProps> = (props) => {
+const Banner_Parallax: React.FunctionComponent<IAppProps> = (props) => {
   const talk = useTypewriter('Miànxiàng xīngkōng biānchéng🎉...');
   return (
     <div className={styles.wrap_css_doodle}>
@@ -82,4 +82,4 @@ const App: React.FunctionComponent<IAppProps> = (props) => {
   );
 };
 
-export default App;
+export default Banner_Parallax;
