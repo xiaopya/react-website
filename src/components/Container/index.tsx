@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Banner_Parallax from '@/components/Banner_Parallax';
 import { FullSlip, SlipItem } from 'react-fullslip';
-import { Myiconfont } from '@/utils/IconFont';
 
 interface IAppProps {}
 
