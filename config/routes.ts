@@ -18,6 +18,10 @@ export default [
         path: '/todolist',
         component: '@/pages/Todolist',
       },
+      {
+        path: '/markdown',
+        component: '@/pages/Markdown_text',
+      },
     ],
   },
   /**

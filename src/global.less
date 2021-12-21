@@ -2,10 +2,12 @@
   padding: 0;
   margin: 0;
 }
+
 @font-face {
   font-family: font_f;
   src: url('./assets/fonts/ChengNanHuaKai-2.ttf');
 }
+
 html,
 body,
 #root {
@@ -23,6 +25,7 @@ body,
 .ant-layout {
   min-height: 100vh;
 }
+
 .ant-pro-sider.ant-layout-sider.ant-pro-sider-fixed {
   left: unset;
 }
@@ -40,4 +43,63 @@ body {
 ul,
 ol {
   list-style: none;
+}
+
+// markdown
+.md {
+  width: 100%;
+  height: 100%;
+}
+
+// home 轮播图 分页图标
+.slip-navigation {
+  .navigation-dot {
+    transform: scale(1.25);
+    color: rgb(120, 120, 207);
+    width: 1.25rem;
+    height: 1.25rem;
+    border-radius: 50%;
+    background-image: -webkit-gradient(
+      linear,
+      left top,
+      left bottom,
+      color-stop(0%, #f4f4f4),
+      color-stop(100%, #e3e3e3)
+    );
+    background-image: -moz-gradient(
+      linear,
+      left top,
+      left bottom,
+      color-stop(0%, #f4f4f4),
+      color-stop(100%, #e3e3e3)
+    );
+    box-shadow: 0px 0px 2px rgb(0 0 0 / 25%), 10px 10px 15px #e3e3e3,
+      -10px 10px 15px #e3e3e3, -15px -15px 15px rgb(255 255 255 / 40%),
+      15px -15px 15px rgb(255 255 255 / 40%), inset 0px 2px 0px white;
+    transition: box-shadow 0.3s ease-in-out, background-image 0.3s ease-in-out,
+      text-shadow 0.5s linear, color 0.5s linear;
+  }
+
+  .navigation-dot.active {
+    color: #94a3c4;
+    background-image: -webkit-gradient(
+      linear,
+      left top,
+      left bottom,
+      color-stop(0%, #e3e3e3),
+      color-stop(100%, #f4f4f4)
+    );
+    background-image: -moz-gradient(
+      linear,
+      left top,
+      left bottom,
+      color-stop(0%, #e3e3e3),
+      color-stop(100%, #f4f4f4)
+    );
+    box-shadow: 0px 0px 3px rgb(0 0 0 / 15%),
+      10px 10px 15px rgb(255 255 255 / 40%),
+      -10px 10px 15px rgb(255 255 255 / 40%), -10px -10px 15px #e3e3e3,
+      10px -10px 15px #e3e3e3, inset 0px -3px 0px rgb(255 255 255 / 40%),
+      inset 0px 3px 3px rgb(0 0 0 / 4%);
+  }
 }

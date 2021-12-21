@@ -10,12 +10,12 @@ const WrapContainer: React.FunctionComponent<IAppProps> = (props) => {
     activeClass: 'active', //默认active
     duration: 1000, //默认1000
     transverse: false, //默认纵向false
-    navImage: [
-      require('@/assets/icon/home.png'),
-      require('@/assets/icon/home.png'),
-      require('@/assets/icon/home.png'),
-      require('@/assets/icon/home.png'),
-    ], //默认无图片
+    // navImage: [
+    //   require('@/assets/icon/home.png'),
+    //   require('@/assets/icon/home.png'),
+    //   require('@/assets/icon/home.png'),
+    //   require('@/assets/icon/home.png'),
+    // ], //默认无图片
     arrowNav: false, //默认无箭头 false
   };
   return (
