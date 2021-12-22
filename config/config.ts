@@ -18,4 +18,10 @@ export default defineConfig({
   title: '小陈同学',
   fastRefresh: {},
   routes,
+  // 接口代理
+  proxy: {
+    '/api': {
+      target: 'http://localhost:4001',
+    },
+  },
 });
