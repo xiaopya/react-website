@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 import Banner_Parallax from '@/components/Banner_Parallax';
 import { FullSlip, SlipItem } from 'react-fullslip';
+import Direction from './direction';
 
 interface IAppProps {}
 
@@ -23,6 +24,7 @@ const WrapContainer: React.FunctionComponent<IAppProps> = (props) => {
       <FullSlip {...options}>
         <SlipItem style={{ backgroundColor: '#C6E2FF' }}>
           <Banner_Parallax />
+          <Direction />
         </SlipItem>
         <SlipItem style={{ backgroundColor: '#C1FFC1' }}>page2</SlipItem>
         <SlipItem style={{ backgroundColor: '#FFEC8B' }}>page3</SlipItem>
